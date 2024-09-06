@@ -4,7 +4,15 @@
     <p>Build stronger Customer Relationships with Consultalk</p>
   </div>
   <form name="newsletter" method="POST" data-netlify="true">
-    <label for="email" class="email"> <input type="email" id="email" name="email" required placeholder="your mail address" /></label>
+    <label for="email" class="email">
+      <input
+        type="email"
+        id="email"
+        name="email"
+        required
+        placeholder="your mail address"
+      /></label
+    >
     <div class="knap">
       <button class="send_buttondiv" type="submit">Subscribe</button>
     </div>
@@ -14,13 +22,15 @@
 <style>
   @layer components {
     article {
-      /* inline-size: min(600px, 100% - 1rem); */
+      inline-size: min(1200px, 100% - 1rem);
       block-size: 150px;
       border-radius: 10px;
       background: var(--color-primary3);
       overflow: clip;
       position: relative;
       isolation: isolate;
+      max-width: var(--content-width);
+      margin: 0 auto;
 
       &::before {
         --square-count: 12;
@@ -35,12 +45,26 @@
         right: 0;
         top: 0;
         transform-origin: 0 0;
-        inline-size: calc(round(var(--_square-sum), var(--_square-size)) - var(--_square-half));
+        inline-size: calc(
+          round(var(--_square-sum), var(--_square-size)) - var(--_square-half)
+        );
         aspect-ratio: 0.7;
-        background: linear-gradient(135deg, #be965d, #976f40, #c99b61, #f0be7b, #ffcb85, #eebc79, #c0935b, #976f40) 0 0 / 100% 100%;
+        background: linear-gradient(
+            135deg,
+            #be965d,
+            #976f40,
+            #c99b61,
+            #f0be7b,
+            #ffcb85,
+            #eebc79,
+            #c0935b,
+            #976f40
+          )
+          0 0 / 100% 100%;
         mask:
           var(--square-pattern) 0 0 / var(--_square-size) var(--_square-size),
-          var(--square-pattern) var(--_square-half) var(--_square-half) / var(--_square-size) var(--_square-size);
+          var(--square-pattern) var(--_square-half) var(--_square-half) /
+            var(--_square-size) var(--_square-size);
         /*clip-path: polygon(-3% 0%, 100% 0%, 100% 103%);*/
         rotate: -45deg;
       }
@@ -67,9 +91,9 @@
       gap: 141px;
       padding: 87px;
 
-      h4 {
+      /* h4 {
         margin-bottom: 12px;
-      }
+      } */
     }
 
     form {

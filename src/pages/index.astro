@@ -230,9 +230,13 @@ const corevalueData = await fetch(
     grid-template-columns: 1fr 1fr;
     color: var(--color-primary3);
     gap: 69px;
+    max-width: var(--content-width);
+    margin: 0 auto;
+
     .del1 {
       display: flex;
       flex-direction: column;
+      flex-wrap: wrap;
     }
   }
 
