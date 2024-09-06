@@ -1,0 +1,100 @@
+---
+import CorevaluesCard from "./CorevaluesCard.astro";
+import Button from "./Button.astro";
+import { Icon } from "astro-icon/components";
+
+const { data } = Astro.props;
+const { buttonProps1 } = Astro.props;
+const { title, subtitle, button, values, link, text } = data;
+// console.log(data);
+---
+
+<section>
+  <article class="full">
+    <h2>{title}</h2>
+    <div class="teksten">
+      <p>{subtitle}</p>
+      <!-- <a href={button.link}>
+        <button>{button.text}</button>
+      </a> -->
+      <Button {...buttonProps1} linket={button.link}>{button.text}</Button>
+    </div>
+    <!-- {values.map((corevalue) => <CorevaluesCard {corevalue} />)} -->
+
+    <ul role="list">
+      {
+        values.map((corevalue) => (
+          <li>
+            <Icon name={corevalue.icon} />
+
+            <h5>{corevalue.title}</h5>
+            <p>{corevalue.description}</p>
+            <a href={corevalue.link.url}>{corevalue.link.text}</a>
+          </li>
+        ))
+      }
+    </ul>
+  </article>
+</section>
+
+<style>
+  @layer components {
+    a {
+      color: var(--color-primary3);
+      align-self: end;
+      &:hover {
+        transform: scale(1.04);
+      }
+    }
+    section {
+      > * {
+        grid-column: content;
+      }
+      .full {
+        grid-column: full;
+        display: grid;
+        grid-template-columns: inherit;
+        row-gap: 3rem;
+
+        > ul {
+          padding-block-end: 1rem;
+        }
+      }
+    }
+
+    ul {
+      display: flex;
+      gap: 1rem;
+      overflow-x: auto;
+      li {
+        flex-basis: min(400px, 90%);
+        background: var(--color-secondary2);
+        color: var(--color-text);
+        border-radius: 8px;
+        padding: 2.75rem 2.1875rem;
+        align-self: start;
+
+        h5 {
+          font-weight: 700;
+          color: var(--color-primary3);
+        }
+      }
+      img {
+        width: 10%;
+      }
+    }
+
+    h6 {
+      margin-block: 0 0.625rem;
+      line-height: 1.125;
+    }
+
+    .teksten {
+      display: flex;
+      justify-content: space-between;
+      p {
+        max-inline-size: 67ch;
+      }
+    }
+  }
+</style>

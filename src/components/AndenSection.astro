@@ -1,0 +1,81 @@
+---
+import { Image } from "astro:assets";
+import home1 from "../assets/home1.jpg";
+import Tag from "./Tag.astro";
+
+const { imageProps, h2, tekst, tagProps, li1, li2, order } = Astro.props;
+---
+
+<section class="what-to-expect">
+  <figure class={order}>
+    <!-- <Image {...imageProps} /> -->
+    <Image alt="" src={home1} />
+  </figure>
+  <article>
+    <Tag {...tagProps}><slot /></Tag>
+
+    <div class="content">
+      <div>
+        <h2>{h2}</h2>
+        <p>{tekst}</p>
+      </div>
+      <ul>
+        <li>{li1}</li>
+        <li>{li2}</li>
+      </ul>
+    </div>
+  </article>
+</section>
+
+<style>
+  @layer components {
+    .what-to-expect {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      justify-content: center;
+      gap: 82px;
+      color: var(--color-primary3);
+
+      article {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+      }
+
+      .content {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+      }
+    }
+
+    .order {
+      order: 1;
+    }
+
+    [data-icon="balance"] {
+      width: 24px;
+    }
+
+    ul {
+      display: grid;
+      gap: 1rem;
+    }
+
+    li {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      align-items: center;
+      gap: 1rem;
+      font-size: 1rem;
+      color: #595566;
+    }
+
+    li:before {
+      content: "";
+      width: 1.6rem;
+      aspect-ratio: 1;
+      background: var(--checkmark-icon) 50% 50% / contain no-repeat;
+    }
+  }
+</style>

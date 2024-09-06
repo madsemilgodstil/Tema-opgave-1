@@ -1,0 +1,92 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import AndenSection from "../components/AndenSection.astro";
+import Accordion from "../components/Accordion.astro";
+import Tag from "../components/Tag.astro";
+
+import { Image } from "astro:assets";
+import case2 from "../assets/case2.jpg";
+---
+
+<MainLayout title="About">
+  <section>
+    <AndenSection order="order" imageProps={{ imageProps: "case2" }} tagProps={{ style: "primary" }} h2="Turn your ideas into reality." tekst="Capitalize on low hanging fruit to identify a ballpark value added activity beta test. Override the digital divide with additional from DevOps." li1="Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day." li2="Capitalize on low hanging fruit to identify a ballpark value added activity to beta test override the digital.">About Us</AndenSection>
+    <dl>
+      <div>
+        <dt>Team members</dt>
+        <dd>908+</dd>
+      </div>
+      <div>
+        <dt>Happy customers</dt>
+        <dd>258+</dd>
+      </div>
+    </dl>
+  </section>
+  <section class="team">
+    <p class="faq">Our team</p>
+    <h2>We champion the bold to achieve the extraordinary</h2>
+    <p>Ippsum is the result of synergy between our teams and our customers. Our company culture is focused on excellent productivity, customer satisfaction, respect for team.</p>
+  </section>
+  <section class="accordion">
+    <div class="overskrift-tag">
+      <Tag style="primary">FAQ</Tag>
+      <h2>Customer Questions</h2>
+    </div>
+    <div class="accordion-container">
+      <Accordion overskrift1="What will happen when I’ve sent my application?" />
+
+      <Accordion overskrift1="Can I get a free trial before I purchase?">
+        <p>Ippsum is the result of synergy between our teams and our customers. Our company culture is focused on excellent productivity, customer satisfaction, respect for team and individual achievements.</p>
+      </Accordion>
+
+      <Accordion overskrift1="What should I include in my personal statement?" />
+
+      <Accordion overskrift1="Will membership plans be charged automatically?" />
+
+      <Accordion overskrift1="What will happen when I’ve sent my application?" />
+
+      <Accordion overskrift1="Can I get a free trial before I purchase?" />
+    </div>
+  </section>
+</MainLayout>
+<style>
+  dl {
+    color: black;
+  }
+  .team {
+    color: black;
+  }
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .accordion {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 151px 236px;
+    background: var(--color-secondary1);
+    gap: 40px;
+
+    .overskrift-tag {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 22px;
+      padding-inline: 123px;
+      .faq {
+        background: var(--color-primary2);
+        color: var(--color-secondary2);
+        padding: 0 19px;
+      }
+    }
+  }
+  @media screen and (min-width: 768px) {
+  }
+
+  @media screen and (min-width: 1024px) {
+  }
+
+  @media screen and (min-width: 1440px) {
+  }
+</style>

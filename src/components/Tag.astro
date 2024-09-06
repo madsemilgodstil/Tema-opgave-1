@@ -1,0 +1,29 @@
+---
+const { style } = Astro.props;
+---
+
+<p class={style}><slot /></p>
+
+<style>
+  @layer components {
+    p {
+      padding: 0 19px;
+      border-radius: 20px;
+      align-self: start;
+    }
+    .primary {
+      background: var(--color-primary2);
+      color: var(--color-secondary2);
+    }
+
+    .secondary {
+      background: var(--color-primary1);
+      color: var(--color-primary3);
+    }
+
+    .tertiary {
+      background: var(--color-secondary2);
+      color: var(--color-primary3);
+    }
+  }
+</style>

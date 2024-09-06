@@ -1,0 +1,99 @@
+---
+const { overskrift1 } = Astro.props;
+---
+
+<div class="accordion-body">
+  <div class="accordion">
+    <hr />
+    <div class="container">
+      <div class="label">
+        <h6>{overskrift1}</h6>
+      </div>
+      <div class="content">
+        <slot />
+      </div>
+    </div>
+    <hr />
+  </div>
+</div>
+
+<style>
+  @layer components {
+    .accordion {
+      max-width: 800px;
+      margin: auto;
+      color: var(--color_white);
+      background-color: var(--color_black);
+
+      .container {
+        position: relative;
+        margin: 10px 10px;
+      }
+      .label {
+        position: relative;
+        padding: 10px 0;
+        color: var(--color_white);
+        cursor: pointer;
+        font-weight: bold;
+
+        h6 {
+          font-weight: bold;
+          font-size: var(--font_size_medium);
+        }
+      }
+      .content {
+        position: relative;
+        background: var(--color_black);
+        height: 0;
+        max-width: 670px;
+        overflow: hidden;
+        transition: 0.5s;
+
+        p {
+          max-width: none;
+        }
+      }
+
+      hr {
+        width: 100;
+        margin-left: 0;
+        border: 1px solid var(--color_lightgrey);
+      }
+    }
+
+    .accordion {
+      .label::before {
+        content: "+";
+        color: var(--color_white);
+        position: absolute;
+        top: 50%;
+        right: -5px;
+        transform: translateY(-50%);
+      }
+    }
+
+    .accordion .container.active .content {
+      height: auto;
+    }
+
+    .accordion .container.active .label::before {
+      font-size: 30px;
+    }
+
+    @media screen and (min-width: 768px) {
+      .accordion {
+        padding-inline: 45px;
+      }
+    }
+  }
+</style>
+
+<script>
+  const accordion = document.getElementsByClassName("container");
+
+  for (let i = 0; i < accordion.length; i++) {
+    accordion[i].addEventListener("click", function () {
+      this.classList.toggle("active");
+    });
+  }
+</script>

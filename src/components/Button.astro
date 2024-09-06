@@ -1,0 +1,42 @@
+---
+const { style, linket } = Astro.props;
+---
+
+<a href={linket} target="_blank" class={style}><slot /></a>
+
+<style>
+  @layer components {
+    a {
+      display: inline-block;
+      padding: 16px 37px;
+      transition: all 0.55s ease;
+      border-radius: 42px;
+      align-self: start;
+    }
+
+    a:hover {
+      transform: scale(1.04);
+    }
+
+    .primary {
+      background: var(--color-primary3);
+      color: var(--color-secondary2);
+    }
+    .primary:hover {
+      background: var(--color-secondary2);
+      border: 2px solid var(--color-primary3);
+      color: var(--color-primary3);
+      text-decoration: none;
+    }
+
+    .secondary {
+      background: var(--color-primary1);
+      color: var(--color-primary3);
+    }
+    .secondary:hover {
+      background: var(--color-primary3);
+      color: var(--color-secondary2);
+      text-decoration: none;
+    }
+  }
+</style>

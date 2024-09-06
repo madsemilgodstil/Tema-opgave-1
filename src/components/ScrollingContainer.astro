@@ -1,0 +1,109 @@
+---
+const { cardContent } = Astro.props;
+---
+
+<section>
+  <article class="full">
+    <div class="teksten">
+      <h2>Financial Projections</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    </div>
+
+    <ul role="list">
+      {
+        cardContent.map((card) => (
+          <li>
+            <img src={card.image} alt="" />
+            <h6>{card.title}</h6>
+            <p>{card.body}</p>
+          </li>
+        ))
+      }
+    </ul>
+  </article>
+</section>
+
+<style>
+  @layer components {
+    section {
+      padding-block: 4rem;
+      display: grid;
+      grid-template-columns:
+        [full-start]
+        1fr
+        [content]
+        minmax(0, var(--content-width))
+        1fr
+        [full-end];
+      column-gap: 1rem;
+
+      > * {
+        grid-column: content;
+      }
+
+      .full {
+        grid-column: full;
+        /* display: grid; */
+        grid-template-columns: inherit;
+        row-gap: 3rem;
+        background: var(--color-secondary1);
+
+        > * {
+          grid-column: content;
+          color: var(--color-text);
+        }
+
+        > ul {
+          scroll-snap-type: x mandatory;
+          grid-column: full;
+          /* padding-inline: max(1rem, 50% - var(--content-width) / 2); */
+          padding-block-end: 1rem;
+
+          li {
+            scroll-snap-align: center;
+          }
+        }
+      }
+    }
+
+    ul {
+      display: flex;
+      gap: 1rem;
+      overflow-x: auto;
+
+      li {
+        flex-basis: min(400px, 90%);
+        flex-shrink: 0;
+        background: var(--color-card);
+        color: var(--color-text);
+        border-radius: 8px;
+        padding: 2.75rem 2.1875rem;
+        align-self: start;
+        &:hover {
+          background: var(--color-primary3);
+          color: var(--color-secondary2);
+        }
+        h2 {
+          font-weight: 700;
+          color: var(--color-primary3);
+        }
+      }
+      img {
+        width: 10%;
+      }
+    }
+
+    h6 {
+      /* all: revert; */
+      margin-block: 0 0.625rem;
+      line-height: 1.125;
+    }
+
+    .teksten {
+      p {
+        max-inline-size: 67ch;
+        /* color: var(--color-text); */
+      }
+    }
+  }
+</style>

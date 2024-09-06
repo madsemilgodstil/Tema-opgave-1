@@ -1,0 +1,55 @@
+<article>
+  <h2>Dashboard Login</h2>
+  <form name="newsletter" method="POST" data-netlify="true">
+    <label for="email" class="email"> <input type="email" id="email" name="email" required placeholder="enter email" /></label>
+    <label for="password" class="password"> <input type="text" id="password" name="password" required placeholder="password" /></label>
+    <div class="knap">
+      <button class="send_buttondiv" type="submit">Go to dashboard</button>
+    </div>
+  </form>
+</article>
+
+<style>
+  @layer components {
+    article {
+      background: var(--color-primary3);
+      color: var(--color-secondary2);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 46px;
+      padding: 40px 60px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      align-items: center;
+
+      #email,
+      #password {
+        padding: 22px 155px 22px 33px;
+        border-radius: 54px;
+        border: 1px #e3e3e3;
+        color: #a9a9a9;
+      }
+    }
+
+    button {
+      display: inline-block;
+      padding: 16px 37px;
+      transition: all 0.55s ease;
+      border-radius: 42px;
+      background: var(--color-primary1);
+      color: var(--color-primary3);
+
+      &:hover {
+        transform: scale(1.04);
+        background: var(--color-primary3);
+        color: var(--color-secondary2);
+        text-decoration: none;
+      }
+    }
+  }
+</style>
