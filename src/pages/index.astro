@@ -20,25 +20,56 @@ import Animation from "../components/Animation.astro";
 
 import CorevaluesSection from "../components/CorevaluesSection.astro";
 
-const corevalueData = await fetch("https://raw.githubusercontent.com/espi0001/frontend-design/main/resources/json/corevalues.json").then((res) => res.json());
+const corevalueData = await fetch(
+  "https://raw.githubusercontent.com/espi0001/frontend-design/main/resources/json/corevalues.json"
+).then((res) => res.json());
 ---
 
 <MainLayout title="Home">
   <section class="hero">
     <article class="tekst-knap">
       <h1>Adam Buschemia Business Consultant</h1>
-      <p>Get help from Alex Moore, a professional business coach with advanced experience on growth and business scaling.</p>
+      <p>
+        Get help from Alex Moore, a professional business coach with advanced
+        experience on growth and business scaling.
+      </p>
       <Button style="secondary" linket="#">Book a meeting</Button>
     </article>
     <Image alt="" src={sarah} />
   </section>
 
   <section class="who-we-are">
-    <Card style="primary" buttonProps={{ style: "primary" }} h6="Finance & Restructuring" tekst="Get help from Alex Moore, a professional business coach with advanced experience on growth and business scaling.">Our Services</Card>
-    <Card style="primary" buttonProps={{ style: "primary" }} h6="Our Approach" tekst="Get help from Alex Moore, a professional business coach with advanced experience on growth and business scaling.">More About</Card>
-    <Card style="primary" buttonProps={{ style: "primary" }} h6="Our Approach" tekst="Get help from Alex Moore, a professional business coach with advanced experience on growth and business scaling.">Explore Our Solution</Card>
+    <Card
+      style="primary"
+      buttonProps={{ style: "primary" }}
+      h6="Finance & Restructuring"
+      tekst="Get help from Alex Moore, a professional business coach with advanced experience on growth and business scaling."
+      >Our Services</Card
+    >
+    <Card
+      style="primary"
+      buttonProps={{ style: "primary" }}
+      h6="Our Approach"
+      tekst="Get help from Alex Moore, a professional business coach with advanced experience on growth and business scaling."
+      >More About</Card
+    >
+    <Card
+      style="primary"
+      buttonProps={{ style: "primary" }}
+      h6="Our Approach"
+      tekst="Get help from Alex Moore, a professional business coach with advanced experience on growth and business scaling."
+      >Explore Our Solution</Card
+    >
   </section>
-  <AndenSection imageProps={{ imageProps: "case2" }} tagProps={{ style: "secondary" }} h2="What To Expect" tekst="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." li1="Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day." li2="Capitalize on low hanging fruit to identify a ballpark value added activity to beta test override the digital.">WE'LL WORK WITH YOU</AndenSection>
+  <AndenSection
+    imageProps={{ imageProps: "case2" }}
+    tagProps={{ style: "secondary" }}
+    h2="What To Expect"
+    tekst="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+    li1="Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day."
+    li2="Capitalize on low hanging fruit to identify a ballpark value added activity to beta test override the digital."
+    >WE'LL WORK WITH YOU</AndenSection
+  >
 
   <section class="services">
     <!-- <div class="teksten">
@@ -62,18 +93,38 @@ const corevalueData = await fetch("https://raw.githubusercontent.com/espi0001/fr
     <Tag style="secondary">Growing with our Clients</Tag>
     <!-- 
     <Overskrift farve="secondary" linket="#" buttonProps={{ style: "secondary" }} h2="Our core values & principles" tekst="Capitalize on low hanging fruit to identify a ballpark value added activity beta test. Override the digital divide with additional from DevOps.">Get in touch</Overskrift> -->
-    <CorevaluesSection data={corevalueData} buttonProps1={{ style: "secondary" }} buttonProps2={{ style: "primary" }} />
+    <CorevaluesSection
+      data={corevalueData}
+      buttonProps1={{ style: "secondary" }}
+      buttonProps2={{ style: "primary" }}
+    />
   </section>
 
   <section class="sidste">
     <article class="del1">
       <Tag style="secondary">Proccess</Tag>
       <h2>Contact Us. It’s Easy.</h2>
-      <p>Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative.</p>
+      <p>
+        Leverage agile frameworks to provide a robust synopsis for high level
+        overviews. Iterative approaches to corporate strategy foster
+        collaborative.
+      </p>
 
-      <ContactInfo iconname="call-today" tekst="Call Today" h6="+1 800 100 900" />
-      <ContactInfo iconname="monday-friday" tekst="Monday To Friday" h6="9AM - 5PM" />
-      <ContactInfo iconname="adress-grey" tekst="USA Office" h6="195 Devonshire St Boston, MA 02110" />
+      <ContactInfo
+        iconname="call-today"
+        tekst="Call Today"
+        h6="+1 800 100 900"
+      />
+      <ContactInfo
+        iconname="monday-friday"
+        tekst="Monday To Friday"
+        h6="9AM - 5PM"
+      />
+      <ContactInfo
+        iconname="adress-grey"
+        tekst="USA Office"
+        h6="195 Devonshire St Boston, MA 02110"
+      />
     </article>
     <figure>
       <div class="billede-grid">
@@ -199,11 +250,24 @@ const corevalueData = await fetch("https://raw.githubusercontent.com/espi0001/fr
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
+    position: relative;
 
     :last-child {
       display: flex;
       flex-direction: column;
       gap: 20px;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      bottom: -1rem;
+      left: -1.5rem;
+      width: 11rem;
+      height: var(--step-6);
+      background: var(--color-primary2);
+      z-index: -1;
+      border-radius: 20px;
     }
   }
 </style>
