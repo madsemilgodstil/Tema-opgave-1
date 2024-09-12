@@ -10,7 +10,12 @@ import { Icon } from "astro-icon/components";
         <Icon name="financial-projections" />
       </div>
       <h2>Financial Projections</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+        commodo consequat.
+      </p>
     </div>
     <div class="buttons">
       <button class="scroll-arrow left" id="scroll-left">&larr;</button>
@@ -39,23 +44,14 @@ import { Icon } from "astro-icon/components";
       grid-column: full;
       display: grid;
       grid-template-columns: var(--layout-grid2);
-      /* grid-template-rows: var(--layout-rows2); */
       grid-template-rows: auto auto;
-      /* row-gap: 4rem; */
       row-gap: var(--space-2xl);
-      /* padding: 5rem 0; */
       padding: var(--space-xl) 0;
-
       background: var(--color-secondary1);
       color: var(--color-primary3);
       @media (width < 600px) {
-        /* padding-inline: 1rem; */
         padding: var(--space-xs);
       }
-      /* > * {
-        grid-column: 2;
-      } */
-
       > ul {
         scroll-snap-type: x mandatory;
         grid-column: 1 / -1;
@@ -102,16 +98,13 @@ import { Icon } from "astro-icon/components";
         }
         .buttons {
           display: flex;
-          /* gap: 20px; */
           gap: var(--space-s);
-
           @media (width < 600px) {
             margin-top: var(--space-s);
           }
         }
       }
     }
-    /* scrolling stop */
 
     .scroll-arrow {
       background: var(--color-primary3);
@@ -129,7 +122,6 @@ import { Icon } from "astro-icon/components";
 
     .full-width {
       display: flex;
-      /* gap: 1rem; */
       gap: var(--space-xs);
       overflow-x: auto;
       list-style: none;
@@ -162,8 +154,8 @@ import { Icon } from "astro-icon/components";
     const leftButton = document.getElementById("scroll-left");
     const rightButton = document.getElementById("scroll-right");
 
-    const cardWidth = 400; // Width of each card
-    const scrollAmount = cardWidth + 16; // cardWidth + gap between cards
+    const cardWidth = 400;
+    const scrollAmount = cardWidth + 16;
 
     leftButton.addEventListener("click", () => {
       container.scrollBy({ left: -scrollAmount, behavior: "smooth" });
@@ -174,3 +166,4 @@ import { Icon } from "astro-icon/components";
     });
   });
 </script>
+```
