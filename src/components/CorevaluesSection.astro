@@ -17,7 +17,9 @@ const { title, subtitle, button, values } = data;
       </div>
       <div>
         <p>{subtitle}</p>
-        <Button class="knap" {...buttonProps1} linket={button.link}>{button.text}</Button>
+        <Button class="knap" {...buttonProps1} linket={button.link}
+          >{button.text}</Button
+        >
       </div>
     </div>
 
@@ -92,8 +94,7 @@ const { title, subtitle, button, values } = data;
       ul {
         display: flex;
         justify-content: space-between;
-        /* gap: 2.25rem; */
-        /* overflow-x: auto; */
+
         margin-top: 0;
 
         @media (width < 600px) {
