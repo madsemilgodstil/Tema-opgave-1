@@ -3,22 +3,30 @@ import Button from "./Button.astro";
 const { style, h6, tekst, buttonProps } = Astro.props;
 ---
 
-<article class={style}>
+<div class={style}>
   <h6>{h6}</h6>
   <p>{tekst}</p>
 
   <Button {...buttonProps}><slot /></Button>
-</article>
+</div>
 
 <style>
   @layer components {
-    article {
-      padding: 46px;
+    div {
+      padding: var(--space-l);
       display: flex;
       flex-direction: column;
-      gap: 36px;
-      border-radius: 20px;
-      backdrop-filter: blur(32px);
+      /* border-radius: 20px; */
+      border-radius: var(--space-s);
+      /* backdrop-filter: blur(32px); */
+      backdrop-filter: blur(var(--space-m));
+      h6 {
+        margin-bottom: var(--space-2xs);
+        color: var(--color-secondary2);
+      }
+      p {
+        margin-bottom: var(--space-l);
+      }
     }
 
     .primary {
@@ -29,7 +37,7 @@ const { style, h6, tekst, buttonProps } = Astro.props;
 
     .secondary {
       background: var(--color-secondary1);
-      border: 1px #eaeaea;
+      border: 1px var(--color-card);
       color: var(--color-primary3);
     }
   }

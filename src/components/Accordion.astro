@@ -1,95 +1,167 @@
 ---
-const { overskrift1 } = Astro.props;
+import Tag from "./Tag.astro";
 ---
 
-<div class="accordion-body">
-  <div class="accordion">
-    <hr />
-    <div class="container">
-      <div class="label">
-        <h6>{overskrift1}</h6>
-      </div>
-      <div class="content">
-        <slot />
-      </div>
-    </div>
-    <hr />
+<section class="container">
+  <div class="del1">
+    <Tag style="primary" place="center">FAQ</Tag>
+    <h2>Customer Questions</h2>
   </div>
-</div>
+
+  <div class="del2">
+    <div class="accordion">
+      <div class="container2">
+        <div class="label">
+          <h6>What will happen when I’ve sent my application?</h6>
+        </div>
+        <div class="content">Ippsum is the result of synergy between our teams and our customers. Our company culture is focused on excellent productivity, customer satisfaction, respect for team and individual achievements.</div>
+      </div>
+      <hr />
+    </div>
+
+    <div class="accordion">
+      <div class="container2">
+        <div class="label">
+          <h6>Can I get a free trial before I purchase?</h6>
+        </div>
+        <div class="content">Ippsum is the result of synergy between our teams and our customers. Our company culture is focused on excellent productivity, customer satisfaction, respect for team and individual achievements.</div>
+      </div>
+      <hr />
+    </div>
+
+    <div class="accordion">
+      <div class="container2">
+        <div class="label">
+          <h6>What should I include in my personal statement?</h6>
+        </div>
+        <div class="content">Ippsum is the result of synergy between our teams and our customers. Our company culture is focused on excellent productivity, customer satisfaction, respect for team and individual achievements.</div>
+      </div>
+      <hr />
+    </div>
+
+    <div class="accordion">
+      <div class="container2">
+        <div class="label">
+          <h6>Will membership plans be charged automatically?</h6>
+        </div>
+        <div class="content">Ippsum is the result of synergy between our teams and our customers. Our company culture is focused on excellent productivity, customer satisfaction, respect for team and individual achievements.</div>
+      </div>
+      <hr />
+    </div>
+
+    <div class="accordion">
+      <div class="container2">
+        <div class="label">
+          <h6>What will happen when I’ve sent my application?</h6>
+        </div>
+        <div class="content">Ippsum is the result of synergy between our teams and our customers. Our company culture is focused on excellent productivity, customer satisfaction, respect for team and individual achievements.</div>
+      </div>
+      <hr />
+    </div>
+
+    <div class="accordion">
+      <div class="container2">
+        <div class="label">
+          <h6>Can I get a free trial before I purchase?</h6>
+        </div>
+        <div class="content">Ippsum is the result of synergy between our teams and our customers. Our company culture is focused on excellent productivity, customer satisfaction, respect for team and individual achievements.</div>
+      </div>
+      <hr />
+    </div>
+  </div>
+</section>
 
 <style>
   @layer components {
-    .accordion {
-      max-width: 800px;
-      margin: auto;
-      color: var(--color_white);
-      background-color: var(--color_black);
-
-      .container {
-        position: relative;
-        margin: 10px 10px;
+    .container {
+      display: grid;
+      gap: 40px;
+      grid-column: content;
+      background: var(--color-secondary1);
+      color: var(--color-primary3);
+      padding: 5rem 0;
+      @media (width < 600px) {
+        display: block;
       }
-      .label {
-        position: relative;
-        padding: 10px 0;
-        color: var(--color_white);
-        cursor: pointer;
-        font-weight: bold;
-
-        h6 {
-          font-weight: bold;
-          font-size: var(--font_size_medium);
-        }
+      h6 {
+        font-size: 1.25rem;
       }
-      .content {
-        position: relative;
-        background: var(--color_black);
-        height: 0;
-        max-width: 670px;
-        overflow: hidden;
-        transition: 0.5s;
-
-        p {
-          max-width: none;
-        }
+      .del1 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
       }
 
-      hr {
-        width: 100;
-        margin-left: 0;
-        border: 1px solid var(--color_lightgrey);
+      .del2 {
       }
-    }
-
-    .accordion {
-      .label::before {
-        content: "+";
-        color: var(--color_white);
-        position: absolute;
-        top: 50%;
-        right: -5px;
-        transform: translateY(-50%);
-      }
-    }
-
-    .accordion .container.active .content {
-      height: auto;
-    }
-
-    .accordion .container.active .label::before {
-      font-size: 30px;
-    }
-
-    @media screen and (min-width: 768px) {
       .accordion {
-        padding-inline: 45px;
+        max-width: 800px;
+        margin: auto;
+
+        .container2 {
+          position: relative;
+          margin: 10px 10px;
+        }
+        .label {
+          position: relative;
+          padding: 10px 0;
+
+          cursor: pointer;
+          font-weight: bold;
+
+          h6 {
+            font-weight: bold;
+          }
+        }
+        .content {
+          position: relative;
+
+          height: 0;
+          max-width: 670px;
+          overflow: hidden;
+          transition: 0.5s;
+
+          p {
+            max-width: none;
+          }
+        }
+
+        hr {
+          width: 100;
+          margin-left: 0;
+        }
+      }
+
+      .accordion {
+        .label::before {
+          content: "+";
+          position: absolute;
+          top: 50%;
+          right: -5px;
+          transform: translateY(-50%);
+        }
+      }
+
+      .accordion .container2.active .content {
+        height: auto;
+      }
+
+      .accordion .container2.active .label::before {
+        font-size: 30px;
+        content: "-";
+      }
+
+      @media screen and (min-width: 768px) {
+        .accordion {
+          padding-inline: 45px;
+        }
       }
     }
   }
 </style>
 
 <script>
-  const accordion = document.getElementsByClassName("container");
+  const accordion = document.getElementsByClassName("container2");
 
   for (let i = 0; i < accordion.length; i++) {
     accordion[i].addEventListener("click", function () {

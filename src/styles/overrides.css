@@ -6,47 +6,62 @@
 
 figure {
   position: relative;
-
   &::before {
-    --square-count: 10;
+    --square-count: 15;
     --square-size: 1.34rem;
-
     --_square-size: var(--square-size, 1rem);
     --_square-half: calc(var(--square-size) / 2);
     --_square-sum: calc(var(--square-count) * var(--square-size));
     z-index: -1;
     content: "";
     position: absolute;
-    inset: -30px -30px auto auto;
     /*inline-size: calc(var(--square-count) * 1.34rem - .67rem);*/
-    inline-size: calc(
-      round(var(--_square-sum), var(--_square-size)) - var(--_square-half)
-    );
+    inline-size: calc(round(var(--_square-sum), var(--_square-size)) - var(--_square-half));
     aspect-ratio: 1;
-    background: linear-gradient(
-        135deg,
-        #be965d,
-        #976f40,
-        #c99b61,
-        #f0be7b,
-        #ffcb85,
-        #eebc79,
-        #c0935b,
-        #976f40
-      )
-      0 0 / 100% 100%;
-    mask: var(--square-pattern) 0 0 / var(--_square-size) var(--_square-size),
-      var(--square-pattern) var(--_square-half) var(--_square-half) /
-        var(--_square-size) var(--_square-size);
+    background: linear-gradient(135deg, #be965d, #976f40, #c99b61, #f0be7b, #ffcb85, #eebc79, #c0935b, #976f40) 0 0 / 100% 100%;
+    mask: var(--square-pattern) 0 0 / var(--_square-size) var(--_square-size), var(--square-pattern) var(--_square-half) var(--_square-half) / var(--_square-size) var(--_square-size);
     /*clip-path: polygon(-3% 0%, 100% 0%, 100% 103%);*/
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    background: var(--color-primary2);
+    width: 150px;
+    height: 100px;
+    border-radius: 10px;
+    z-index: -1;
   }
 }
 
-/* @layer {
-  body {
-    min-height: 100svh;
-    font-family: system-ui, sans-serif;
-    display: grid;
-    place-content: center;
+.figure-version1 {
+  &::before {
+    --square-count: 14;
+    inset: -30px -30px auto auto;
   }
-} */
+  &::after {
+    left: -1rem;
+    bottom: -1rem;
+  }
+}
+
+.figure-version2 {
+  &::before {
+    inset: -40px;
+  }
+  &::after {
+    left: -1rem;
+    bottom: 18rem;
+  }
+}
+
+.figure-version3 {
+  &::before {
+    inset: -40px -40px auto auto;
+  }
+
+  &::after {
+    right: -1rem;
+    top: -1rem;
+  }
+}

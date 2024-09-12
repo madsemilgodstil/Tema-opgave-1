@@ -1,114 +1,176 @@
 ---
 const { cardContent } = Astro.props;
+import { Icon } from "astro-icon/components";
 ---
 
-<section>
-  <article class="full">
-    <div class="teksten">
+<section class="scrolling">
+  <div class="scrolling-top">
+    <div class="text">
+      <div class="icon">
+        <Icon name="financial-projections" />
+      </div>
       <h2>Financial Projections</h2>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-        commodo consequat.
-      </p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
     </div>
+    <div class="buttons">
+      <button class="scroll-arrow left" id="scroll-left">&larr;</button>
+      <button class="scroll-arrow right" id="scroll-right">&rarr;</button>
+    </div>
+  </div>
 
-    <ul role="list">
-      {
-        cardContent.map((card) => (
-          <li>
+  <ul class="full-width">
+    {
+      cardContent.map((card) => (
+        <li>
+          <div class="icon-card">
             <img src={card.image} alt="" />
-            <h6>{card.title}</h6>
-            <p>{card.body}</p>
-          </li>
-        ))
-      }
-    </ul>
-  </article>
+          </div>
+          <h6>{card.title}</h6>
+          <p>{card.body}</p>
+        </li>
+      ))
+    }
+  </ul>
 </section>
 
 <style>
   @layer components {
-    section {
-      padding-block: 4rem;
+    .scrolling {
+      grid-column: full;
       display: grid;
-      grid-template-columns:
-        [full-start]
-        1fr
-        [content]
-        minmax(0, var(--content-width))
-        1fr
-        [full-end];
-      column-gap: 1rem;
+      grid-template-columns: var(--layout-grid2);
+      /* grid-template-rows: var(--layout-rows2); */
+      grid-template-rows: auto auto;
+      /* row-gap: 4rem; */
+      row-gap: var(--space-2xl);
+      /* padding: 5rem 0; */
+      padding: var(--space-xl) 0;
 
-      > * {
-        grid-column: content;
+      background: var(--color-secondary1);
+      color: var(--color-primary3);
+      @media (width < 600px) {
+        /* padding-inline: 1rem; */
+        padding: var(--space-xs);
+      }
+      /* > * {
+        grid-column: 2;
+      } */
+
+      > ul {
+        scroll-snap-type: x mandatory;
+        grid-column: 1 / -1;
+        grid-row: 2;
+        padding-inline: max(1rem, 50% - var(--content) / 10px);
+
+        li {
+          scroll-snap-align: center;
+          &:first-child {
+            margin-left: calc(50% - var(--content) / 2);
+            @media (width < 600px) {
+              margin-left: 0px;
+            }
+          }
+          &:last-child {
+            margin-right: calc(50% - var(--content) / 2);
+            @media (width < 600px) {
+              margin-right: 0px;
+            }
+          }
+        }
       }
 
-      .full {
-        grid-column: full;
-        /* display: grid; */
-        grid-template-columns: inherit;
-        row-gap: 3rem;
-        background: var(--color-secondary1);
-
-        > * {
-          grid-column: content;
-          color: var(--color-text);
+      .scrolling-top {
+        grid-column: 2 / 4;
+        grid-row: 1;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        @media (width < 600px) {
+          flex-direction: column;
+          align-items: start;
         }
 
-        > ul {
-          scroll-snap-type: x mandatory;
-          grid-column: full;
-          /* padding-inline: max(1rem, 50% - var(--content-width) / 2); */
-          padding-block-end: 1rem;
+        .text {
+          max-width: 50%;
+          @media (width < 600px) {
+            max-width: none;
+          }
+          .icon {
+            width: 100px;
+            margin-bottom: var(--space-xs);
+          }
+        }
+        .buttons {
+          display: flex;
+          /* gap: 20px; */
+          gap: var(--space-s);
 
-          li {
-            scroll-snap-align: center;
+          @media (width < 600px) {
+            margin-top: var(--space-s);
           }
         }
       }
     }
+    /* scrolling stop */
 
-    ul {
+    .scroll-arrow {
+      background: var(--color-primary3);
+      color: var(--color-secondary2);
+      padding: 11px 14px;
+      border-radius: 50px;
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+      &:last-child {
+        background-color: var(--color-primary1);
+        color: var(--color-primary3);
+      }
+    }
+
+    .full-width {
       display: flex;
-      gap: 1rem;
+      /* gap: 1rem; */
+      gap: var(--space-xs);
       overflow-x: auto;
+      list-style: none;
+      margin-top: 0;
 
       li {
         flex-basis: min(400px, 90%);
         flex-shrink: 0;
         background: var(--color-card);
         color: var(--color-text);
-        border-radius: 8px;
+        border-radius: var(--space-2xs);
         padding: 2.75rem 2.1875rem;
         align-self: start;
-        &:hover {
-          background: var(--color-primary3);
-          color: var(--color-secondary2);
-        }
-        h2 {
-          font-weight: 700;
-          color: var(--color-primary3);
-        }
+        display: grid;
       }
-      img {
-        width: 10%;
-      }
-    }
-
-    h6 {
-      /* all: revert; */
-      margin-block: 0 0.625rem;
-      line-height: 1.125;
-    }
-
-    .teksten {
-      p {
-        max-inline-size: 67ch;
-        /* color: var(--color-text); */
+      .icon-card {
+        width: 40px;
+        margin-bottom: var(--space-s);
+        img {
+          border-radius: 0px;
+        }
       }
     }
   }
 </style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const container = document.querySelector(".scrolling ul");
+    const leftButton = document.getElementById("scroll-left");
+    const rightButton = document.getElementById("scroll-right");
+
+    const cardWidth = 400; // Width of each card
+    const scrollAmount = cardWidth + 16; // cardWidth + gap between cards
+
+    leftButton.addEventListener("click", () => {
+      container.scrollBy({ left: -scrollAmount, behavior: "smooth" });
+    });
+
+    rightButton.addEventListener("click", () => {
+      container.scrollBy({ left: scrollAmount, behavior: "smooth" });
+    });
+  });
+</script>
